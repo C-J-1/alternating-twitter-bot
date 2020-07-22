@@ -28,7 +28,7 @@ def main():
                     time.sleep(300) # pause for 5 minutes
             if "#dogs" in tweet.text:
                 if (a % 2 != 0):
-                    print(tweet.text) # retweet a #dogs tweet if the state of the system is odd.
+                    tweet.retweet() # retweet a #dogs tweet if the state of the system is odd.
                     a = a+1
                     time.sleep(300) # pause for 5 minutes
         except tweepy.TweepError as e:
