@@ -15,3 +15,4 @@ Currently if the variable "a" is even it will retweet a popular post that contai
 
 I should have thought about a more elegant way to alternate between the search terms, but this is what you get. It was just a quick solution to alternate between the two search terms without the need to search for 1, tweet it, search for the other, tweet it, search for the first one again... etc. It's all under the same search stream thing, so you won't be making unnecessary duplicate search requests and annoy the twitter overlords.
 
+I may or may not make further changes some time, such as confirming it hasn't retweeted the same tweet ID before, or only retweeting originals and not retweeting retweets of tweets, to avoid tweet duplication. TWEET.
