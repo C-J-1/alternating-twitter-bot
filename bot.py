@@ -17,22 +17,23 @@ api = tweepy.API(auth, wait_on_rate_limit=True,
 
 def main():
 
-    
-    a=0 # this is just to keep track of the state of the system, odd or even.
-    for tweet in tweepy.Cursor(api.search, "#dogs OR #cats").items(): #replace #cats and #dogs with your own terms, but keep the OR.
+    a=0
+    for tweet in tweepy.Cursor(api.search, '-filter:retweets AND -filter:replies "#cats" OR "#dogs"', result_type="recent", lang="en").items():
         try:
             if "#cats" in tweet.text:
                 if (a % 2 == 0):
-                    tweet.retweet() # retweet a #cats tweet if the state of the system is even.
+                    print(tweet.text)
+                    tweet.retweet()
                     a = a+1
-                    time.sleep(300) # pause for 5 minutes
+                    time.sleep(61)
             if "#dogs" in tweet.text:
                 if (a % 2 != 0):
-                    tweet.retweet() # retweet a #dogs tweet if the state of the system is odd.
+                    print(tweet.text)
+                    tweet.retweet()
                     a = a+1
-                    time.sleep(300) # pause for 5 minutes
+                    time.sleep(60)
         except tweepy.TweepError as e:
-            print(e.reason) # gives error messages when a retweet doesn't work, e.g. when it's a duplicate.
+            print(e.reason)
         except StopIteration:
             break
         
